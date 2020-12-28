@@ -1,5 +1,3 @@
 [build]
 functions = "functions"
 
-[[plugins]]
-  package = "@helloample/netlify-plugin-replace"
