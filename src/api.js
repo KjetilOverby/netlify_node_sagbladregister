@@ -14,9 +14,15 @@ router.get('/', (req, res) => {
       res.send(Posts);
     })
     .catch((e) => {});
-  //   res.json({
-  //     Hello: 'world',
-  //   });
+});
+
+router.get('/:id', async (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  try {
+    const post = await Posts.findById(req.params.id);
+    if (!post) return res.status(404).send();
+    res.send(post);
+  } catch (error) {}
 });
 
 app.use('/.netlify/functions/api', router);
